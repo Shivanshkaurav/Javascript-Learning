@@ -1,0 +1,27 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+#h1{
+    background-color: bisque;
+    padding: 30px 20px;
+    transition: all 0.5s;
+}
+
+#btn{
+    margin: 20px;
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+    transition: all 0.5s;
+}
+
+.classforDiv{
+    padding: 30px;
+    background-color: rgb(255, 234, 117);
+    color: rgba(0, 0, 0, 0.609);
+    border-radius: 10px;
+    font: 100 1.2rem "Gill Sans";
+    margin: 20px;
+}

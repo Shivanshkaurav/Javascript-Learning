@@ -1,0 +1,17 @@
+#myInput{
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+#myBtn, #delete{
+    padding: 20px 40px;
+    border: none;
+    background-color: rgb(55, 189, 234);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+
+#delete{
+    background-color: crimson;
+}
