@@ -3,6 +3,7 @@ const hoursElement = document.querySelector(".hours");
 const minutesElement = document.querySelector(".minutes");
 const secondsElement = document.querySelector(".seconds");
 const heading = document.querySelector("h1");
+const counterTimer = document.querySelector(".counterTimer");
 
 const second = 1000,
  minute = 60 * second,
@@ -11,13 +12,27 @@ const second = 1000,
 
 const timerfunction = () => {
 
-    const now = new Date();
-    let dd = now.getDate();
-    
+    let now = new Date();
+    let dd = String(now.getDate()).padStart(2, "0"),
+        mm = String(now.getMonth() +1).padStart(2, "0"),
+        yyyy = now.getFullYear();
+
+        const enteredDay = prompt("Enter Day").padStart(2, "0");
+        const enteredMonth = prompt("Enter Month").padStart(2, "0");
+
+        now = `${mm}/${dd}/${yyyy}`
 
 
-    setInterval(() => {
-        const timer = new Date("03/21/2024").getTime();
+        let targetDate = `${enteredMonth}/${enteredDay}/${yyyy}`;
+
+        if(now > targetDate){
+            targetDate = `${enteredMonth}/${enteredDay}/${yyyy + 1}`
+        }
+
+
+
+    const intervalID = setInterval(() => {
+        const timer = new Date(targetDate).getTime();
     const today = new Date().getTime();
 
     const difference = timer - today;
@@ -31,8 +46,25 @@ const timerfunction = () => {
     minutesElement.innerText = leftMinute;
     secondsElement.innerText = leftSecond;
 
-    // console.log(`${leftDay} : ${leftHour} : ${leftMinute} : ${leftSecond}`);
+    if(enteredDay>31){
+        counterTimer.style.display = "none";
+        heading.innerText = "Enter valid Date";
+    }
+    if(enteredMonth>12){
+        counterTimer.style.display = "none";
+        heading.innerText = "Enter valid Month";
+    }
+    if(enteredDay>31 && enteredMonth>12){
+        counterTimer.style.display = "none";
+        heading.innerText = "Enter valid Date & Month"
+    }
     
+    if(difference < 0){
+        counterTimer.style.display = "none";
+        heading.innerText = "Time's Up";
+        clearInterval(intervalID);
+
+    }
     }, 0);
 }
 
